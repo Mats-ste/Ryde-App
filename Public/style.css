@@ -1,0 +1,134 @@
+/* ================== RESET & GRUNNLEGGENDE ================== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+  background-color: #f0f4f8; /* lys blå-hvit bakgrunn */
+  color: #333;
+  padding: 10px;
+}
+
+/* ================== KONTAINER ================== */
+.container {
+  max-width: 480px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #ffffff; /* hvit kort-bakgrunn */
+  border-radius: 12px;
+  box-shadow: 0 6px 15px rgba(0,0,0,0.08);
+}
+
+/* ================== OVERSKRIFTER ================== */
+h1 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #1f3c88; /* dyp blå */
+}
+
+h2 {
+  margin-top: 20px;
+  margin-bottom: 10px;
+  color: #1f3c88;
+  font-size: 1.1rem;
+  border-bottom: 2px solid #d0d6e0;
+  padding-bottom: 5px;
+}
+
+/* ================== Text ================== */
+p {
+  text-align: center;
+  margin-bottom: 10px;
+  color: #1f3c88; /* dyp blå */
+}
+
+/* ================== INPUT & KNAPPER ================== */
+.row {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.row input, select {
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 1rem;
+  outline: none;
+  transition: border 0.2s;
+}
+
+.row input:focus, select:focus {
+  border-color: #1f3c88; /* blå aksent */
+}
+
+button {
+  padding: 12px 15px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  background-color: #1f3c88; /* blå hovedfarge */
+  color: #fff;
+  font-weight: bold;
+  transition: background-color 0.2s;
+}
+
+button:hover {
+  background-color: #16306a; /* mørkere blå ved hover */
+}
+
+button.fullBtn {
+  width: 100%;
+  margin-top: 5px;
+  background-color: #1f3c88;
+}
+
+button.fullBtn:hover {
+  background-color: #16306a;
+}
+
+/* ================== LISTE ================== */
+ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+li {
+  background-color: #f4f7fb; /* lys blå kort */
+  padding: 12px 15px;
+  border-radius: 10px;
+  margin-bottom: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+}
+
+li strong {
+  font-weight: 600;
+  color: #1f3c88; /* blå tekst */
+}
+
+li button {
+  margin-top: 5px;
+  background-color: #1f3c88; /* blå for alle knapper */
+}
+
+li button:hover {
+  background-color: #16306a;
+}
+
+/* ================== RESPONSIV ================== */
+@media (max-width: 480px) {
+  .row {
+    flex-direction: column;
+  }
+
+  .row input, .row select, button {
+    width: 100%;
+  }
+}
