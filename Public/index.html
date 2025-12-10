@@ -7,33 +7,27 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
 <div class="container">
-
   <h1>CleanMate</h1>
   <p><strong>Get your mop sloppy with CleanMate!</strong></p>
 
-  <!-- BRUKERE -->
-  <div id="userListDiv">
-  </div>
+  <div id="userListDiv"></div>
 
-  <!-- OPPGAVE-MALER -->
   <h2>Oppgave mal</h2>
   <div class="row">
     <input id="taskTitle" placeholder="Oppgavenavn">
-    <input id="taskPoints" placeholder="Poeng" type="number">
+    <input id="taskPoints" placeholder="Poeng" type="number" min="0">
     <button onclick="addTask()">Legg til</button>
   </div>
 
   <div class="row">
     <select id="taskSelect"></select>
+    <select id="userSelect"></select>
     <button onclick="createInstance()" class="fullBtn">Lag oppgave</button>
   </div>
 
-  <!-- AKTIVE OPPGAVER -->
   <h2>Aktive oppgaver</h2>
   <ul id="instanceList"></ul>
-
 </div>
 
 <script src="script.js"></script>
