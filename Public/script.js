@@ -25,7 +25,7 @@ async function loadInstances() {
     const created = `<br>[LAGET: ${new Date(inst.createdAt).toLocaleString()}]`;
     const user = inst.userName ? `<br>[Bruker: ${inst.userName}]` : "";
 
-    li.innerHTML = `<strong>${inst.title}</strong> – ${inst.points} poeng${user}${created}${done}<br>
+    li.innerHTML = `<strong>${inst.title}</strong> ${inst.points} poeng${user}${created}${done}<br>
                     <button ${inst.completedAt?"disabled":""} onclick="completeInstance(${inst.id})">Fullfør</button>
                     <button onclick="removeInstance(${inst.id})">Fjern</button>`;
     if(inst.completedAt) li.classList.add("completed");
@@ -74,7 +74,7 @@ async function loadUsers(){
   const container = document.querySelector(".container");
   let userDiv = document.getElementById("userListDiv");
   if(!userDiv){ userDiv=document.createElement("div"); userDiv.id="userListDiv"; container.prepend(userDiv);}
-  userDiv.innerHTML = "<h2>Brukere</h2><ul>" + users.map(u=>`<li>${u.name} – ${u.points} poeng</li>`).join("") + "</ul>";
+  userDiv.innerHTML = "<h2>Brukere</h2><ul>" + users.map(u=>`<li>${u.name} ${u.points} poeng</li>`).join("") + "</ul>";
 
   const userSelect = document.getElementById("userSelect");
   userSelect.innerHTML = "";
