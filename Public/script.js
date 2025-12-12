@@ -1,7 +1,7 @@
 const taskSelect = document.getElementById("taskSelect");
 const instanceList = document.getElementById("instanceList");
 
-// ====== Last inn tasks ======
+// ====== Last inn tasks ====== \\
 async function loadTasks() {
   const tasks = await (await fetch("/tasks")).json();
   taskSelect.innerHTML = "";
@@ -13,7 +13,7 @@ async function loadTasks() {
   });
 }
 
-// ====== Last inn oppgave-forekomster ======
+// ====== Last inn oppgave-forekomster ====== \\
 async function loadInstances() {
   const instances = await (await fetch("/instances")).json();
   instanceList.innerHTML = "";
@@ -33,7 +33,7 @@ async function loadInstances() {
   });
 }
 
-// ====== Legg til task ======
+// ====== Legg til task ====== \\
 async function addTask() {
   const title = document.getElementById("taskTitle").value;
   const points = document.getElementById("taskPoints").value;
@@ -44,7 +44,7 @@ async function addTask() {
   loadTasks();
 }
 
-// ====== Opprett oppgave for bruker ======
+// ====== Opprett oppgave for bruker ====== \\
 async function createInstance() {
   const taskId = taskSelect.value;
   const userId = document.getElementById("userSelect").value;
@@ -54,21 +54,21 @@ async function createInstance() {
   loadUsers();
 }
 
-// ====== Fullfør oppgave ======
+// ====== Fullfør oppgave ====== \\
 async function completeInstance(id){
   await fetch(`/instances/${id}/complete`, {method:"PUT"});
   loadInstances();
   loadUsers();
 }
 
-// ====== Fjern oppgave (usynlig) ======
+// ====== Fjern oppgave (usynlig) ====== \\
 async function removeInstance(id){
   await fetch(`/instances/${id}`, {method:"DELETE"});
   loadInstances();
   loadUsers();
 }
 
-// ====== Last inn brukere med poeng ======
+// ====== Last inn brukere med poeng ====== \\
 async function loadUsers(){
   const users = await (await fetch("/users")).json();
   const container = document.querySelector(".container");
@@ -81,7 +81,7 @@ async function loadUsers(){
   users.forEach(u=>{const opt=document.createElement("option"); opt.value=u.id; opt.textContent=u.name; userSelect.appendChild(opt);});
 }
 
-// ====== Start ======
+// ====== Start ====== \\
 loadTasks();
 loadInstances();
 loadUsers();

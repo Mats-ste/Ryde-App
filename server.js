@@ -2,16 +2,17 @@ const express = require("express");
 const sqlite3 = require("sqlite3").verbose();
 const path = require("path");
 const app = express();
-const PORT = 3000;
+const PORT = 65535;
 
 app.use(express.json());
 app.use(express.static(path.join(__dirname, "public")));
 
 const db = new sqlite3.Database("./clean.db");
 
-// ====== Hent alle tasks ======
+// ====== Hent alle tasks ====== \\
 app.get("/tasks", (req, res) => {
-  db.all("SELECT * FROM tasks", (err, rows) => {
+  db.all("SELECT * FROM tasks", 
+    (err, rows) => {
     if (err) return res.status(500).json({ error: err.message });
     res.json(rows);
   });
@@ -25,7 +26,7 @@ app.post("/tasks", (req, res) => {
   });
 });
 
-// ====== Hent alle oppgave-forekomster som er synlige ======
+// ====== Hent alle oppgave-forekomster som er synlige ====== \\
 app.get("/instances", (req, res) => {
   db.all(`
     SELECT tl.id, tl.taskId, tl.userId, tl.createdAt, tl.completedAt,
@@ -42,7 +43,7 @@ app.get("/instances", (req, res) => {
   });
 });
 
-// ====== Opprett oppgave-forekomst ======
+// ====== Opprett oppgave-forekomst ====== \\
 app.post("/instances", (req, res) => {
   const { taskId, userId } = req.body;
   db.get("SELECT * FROM tasks WHERE id = ?", [taskId], (err, task) => {
@@ -61,7 +62,7 @@ app.post("/instances", (req, res) => {
   });
 });
 
-// ====== Fullfør oppgave ======
+// ====== Fullfør oppgave ====== \\
 app.put("/instances/:id/complete", (req, res) => {
   const { id } = req.params;
   db.run("UPDATE task_list SET completedAt = datetime('now') WHERE id = ?", [id], function(err){
@@ -70,7 +71,7 @@ app.put("/instances/:id/complete", (req, res) => {
   });
 });
 
-// ====== Fjern oppgave (usynlig) ======
+// ====== Fjern oppgave (usynlig) ====== \\
 app.delete("/instances/:id", (req, res) => {
   const { id } = req.params;
   db.run("UPDATE task_list SET visible = 0 WHERE id = ?", [id], function(err){
@@ -79,7 +80,7 @@ app.delete("/instances/:id", (req, res) => {
   });
 });
 
-// ====== Hent brukere med poeng ======
+// ====== Hent brukere med poeng ====== \\
 app.get("/users", (req, res) => {
   db.all(`
     SELECT u.id, u.name, IFNULL(SUM(t.points),0) AS points
@@ -93,5 +94,5 @@ app.get("/users", (req, res) => {
   });
 });
 
-// ====== Start server ======
+// ====== Start server ====== \\
 app.listen(PORT, () => console.log(`Server kjører på http://localhost:${PORT}`));
